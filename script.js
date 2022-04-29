@@ -1,6 +1,6 @@
 // computer play returns rock, paper, or scissor
 
-let randomNumber = Math.floor(Math.random() * 3)
+var randomNumber = Math.floor(Math.random() * 3)
 
 function computerPlay(){
     if(randomNumber == 0){
@@ -17,16 +17,26 @@ function computerPlay(){
     }
 }
 
-let playerSelection = prompt("Choose between rock, paper, or scissor:");
-console.log("player chooses " + playerSelection)
+var playerSelection = " scissor"
+var computerSelection = computerPlay();
+
 function singleRound(playerSelection, computerSelection){
-
-    console.log(computerSelection);
-    console.log(playerSelection);
-    if(playerSelection == computerSelection){
-        return ("It's a Draw!");
+    console.log("player chooses" + playerSelection);
+    if(playerSelection === computerSelection){
+        return "Game Draws";
     }
+    if(playerSelection === "rock" && computerSelection === "paper"){
+        return "You Lose! Paper beats Rock."
+    }
+    if(playerSelection === "rock" && computerSelection === "scissor"){
+        return "You win! Rock beats Scissor."}
 
+    if(playerSelection === "paper" && computerSelection === "rock"){
+        return "You Win! Paper beats Rock."
+    }
+    if(playerSelection === "paper" && computerSelection === "scissor"){
+        return "You Lose! Scissor beats Paper."
+    }
 }
-console.log(computerPlay());
-console.log(singleRound());
+
+console.log(singleRound(playerSelection, computerSelection));
