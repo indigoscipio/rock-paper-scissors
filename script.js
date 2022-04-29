@@ -17,7 +17,7 @@ function computerPlay(){
     }
 }
 
-var playerSelection = " scissor"
+var playerSelection = "scissor"
 var computerSelection = computerPlay();
 
 function singleRound(playerSelection, computerSelection){
@@ -37,6 +37,20 @@ function singleRound(playerSelection, computerSelection){
     if(playerSelection === "paper" && computerSelection === "scissor"){
         return "You Lose! Scissor beats Paper."
     }
+    if(playerSelection === "scissor" && computerSelection === "rock"){
+        return "You Lose! Rock beats Scissor."
+    }
+    if(playerSelection === "scissor" && computerSelection === "paper"){
+        return "You Win! Scissor beats paper."
+    }
 }
 
+// function game(){
+//     for (let i = 0; i < 5; i++) {
+//         console.log("Niggas");
+        
+//      }
+// }
+
 console.log(singleRound(playerSelection, computerSelection));
+game();
