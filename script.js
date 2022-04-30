@@ -17,11 +17,16 @@ function computerPlay(){
     }
 }
 
-var playerSelection = "scissor"
+var playerSelection = prompt("Choose between rock, paper, or scissor: ").toLowerCase();
+function playerInput(){
+    
+}
 var computerSelection = computerPlay();
+var playerScore = 0;
+var computerScore = 0;
 
-function singleRound(playerSelection, computerSelection){
-    console.log("player chooses" + playerSelection);
+function singleRound(playerSelection , computerSelection){
+    var playerSelection = prompt("Choose between rock, paper, or scissor: ").toLowerCase();
     if(playerSelection === computerSelection){
         return "Game Draws";
     }
@@ -43,14 +48,19 @@ function singleRound(playerSelection, computerSelection){
     if(playerSelection === "scissor" && computerSelection === "paper"){
         return "You Win! Scissor beats paper."
     }
+    else{
+        return "unknonw value! Please only enter rock, paper or scissor!"
+    }
 }
 
-// function game(){
-//     for (let i = 0; i < 5; i++) {
-//         console.log("Niggas");
-        
-//      }
-// }
+
+function game(){
+    for (let i = 1; i < 6; i++) {
+        singleRound(playerSelection, computerSelection);    
+        console.log("Player score is: " + playerScore);
+        console.log("Computer score is: " + computerScore);
+     }
+}
 
 console.log(singleRound(playerSelection, computerSelection));
 game();
