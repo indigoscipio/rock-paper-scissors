@@ -1,66 +1,88 @@
 // computer play returns rock, paper, or scissor
 
-var randomNumber = Math.floor(Math.random() * 3)
 
 function computerPlay(){
+    var randomNumber = Math.floor(Math.random() * 3)
     if(randomNumber == 0){
-        console.log("Computer chooses Rock");
         return "rock";
     }
     if(randomNumber == 1){
-        console.log("Computer chooses Paper");
         return "paper";
     }
     if(randomNumber == 2){
-        console.log("Computer chooses Scissor")
         return "scissor";
     }
 }
 
-var playerSelection = prompt("Choose between rock, paper, or scissor: ").toLowerCase();
-function playerInput(){
-    
-}
-var computerSelection = computerPlay();
-var playerScore = 0;
-var computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-function singleRound(playerSelection , computerSelection){
-    var playerSelection = prompt("Choose between rock, paper, or scissor: ").toLowerCase();
+function singleRound(playerSelection, computerSelection){
+    computerPlay();
+    computerSelection =  computerPlay();    
+    playerSelection = prompt("Choose between rock, paper, or scissor: ").toLowerCase();
+    console.log("Player chooses " + playerSelection);
+    console.log("Computer chooses " + computerSelection);
+
     if(playerSelection === computerSelection){
-        return "Game Draws";
+        console.log("Game Draws");
     }
-    if(playerSelection === "rock" && computerSelection === "paper"){
-        return "You Lose! Paper beats Rock."
+    else if(playerSelection === "rock" && computerSelection === "paper"){
+        computerScore++;
+        console.log("You Lose! Paper beats Rock.")
     }
-    if(playerSelection === "rock" && computerSelection === "scissor"){
-        return "You win! Rock beats Scissor."}
+    else if(playerSelection === "rock" && computerSelection === "scissor"){
+        playerScore++;
+        console.log("You win! Rock beats Scissor.")}
 
-    if(playerSelection === "paper" && computerSelection === "rock"){
-        return "You Win! Paper beats Rock."
+    else if(playerSelection === "paper" && computerSelection === "rock"){
+        playerScore++;
+        console.log("You Win! Paper beats Rock.")
     }
-    if(playerSelection === "paper" && computerSelection === "scissor"){
-        return "You Lose! Scissor beats Paper."
+    else if(playerSelection === "paper" && computerSelection === "scissor"){
+        computerScore++;
+        console.log("You Lose! Scissor beats Paper.")
     }
-    if(playerSelection === "scissor" && computerSelection === "rock"){
-        return "You Lose! Rock beats Scissor."
+    else if(playerSelection === "scissor" && computerSelection === "rock"){
+        computerScore++;
+        console.log("You Lose! Rock beats Scissor.")
     }
-    if(playerSelection === "scissor" && computerSelection === "paper"){
-        return "You Win! Scissor beats paper."
+    else if(playerSelection === "scissor" && computerSelection === "paper"){
+        playerScore++;
+        console.log("You Win! Scissor beats paper.")
     }
     else{
-        return "unknonw value! Please only enter rock, paper or scissor!"
+        console.log("unknown value! Please only enter rock, paper or scissor!")
     }
 }
 
+// console.log(singleRound());
+
+
+// function game(){
+//     singleRound();
+//     singleRound();
+//     singleRound();
+//     singleRound();
+//     singleRound();
+// }
+// console.log(game());
 
 function game(){
     for (let i = 1; i < 6; i++) {
-        singleRound(playerSelection, computerSelection);    
-        console.log("Player score is: " + playerScore);
-        console.log("Computer score is: " + computerScore);
+        console.log(`Round ${i}`)
+        singleRound(); // play a single round
+        console.log(`Player score: ${playerScore}, Computer Score: ${computerScore}`)
      }
+     if(playerScore > computerScore){
+        console.log("You win!");
+    }
+    else if(computerScore > playerScore){
+        console.log("You Lose!")
+    }
+    else{
+        console.log("Round Draws!!")
+    }
 }
 
-console.log(singleRound(playerSelection, computerSelection));
-game();
+console.log(game());
